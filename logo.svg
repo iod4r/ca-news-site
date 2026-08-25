@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 32" role="img" aria-label="daryo">
+  <style>
+    .txt { fill: #12161C; }
+    @media (prefers-color-scheme: dark) { .txt { fill: #E8E8E4; } }
+  </style>
   <rect x="0" y="6" width="4" height="20" rx="2" fill="#1B6E8C"/>
-  <text x="14" y="24" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-size="22" font-weight="650" letter-spacing="-0.5" fill="currentColor">daryo</text>
+  <text class="txt" x="14" y="24"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="650" letter-spacing="-0.5">daryo</text>
 </svg>
