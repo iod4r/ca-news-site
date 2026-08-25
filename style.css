@@ -1,0 +1,378 @@
+/* ------------------------------------------------------------------
+   Central Asia Wire — feuille de style
+   Type : titres en grotesque serré, métadonnées en monospace.
+   L'inverse de la convention presse (serif/sans), assumé :
+   ici la donnée (source, pays, heure) est aussi importante que le titre.
+------------------------------------------------------------------- */
+
+:root {
+  --paper:  #FAFAF8;
+  --ink:    #12161C;
+  --dust:   #6B7280;
+  --rule:   #E4E3DE;
+  --tile:   #1B6E8C;   /* céramique timouride — couleur d'ancrage */
+  --focus:  #1B6E8C;
+
+  /* Accents pays : encodent une information, pas une décoration */
+  --c-kz: #1B6E8C;
+  --c-uz: #2F8F6B;
+  --c-kg: #B4543A;
+  --c-tj: #7A5EA6;
+  --c-tm: #B08428;
+
+  --font-display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  --wrap: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #101317;
+    --ink:   #E8E8E4;
+    --dust:  #8A93A0;
+    --rule:  #232830;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.5;
+  font-synthesis-weight: none;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- En-tête ---------- */
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.75rem 0 0;
+}
+
+.masthead__title {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.masthead__title a { text-decoration: none; }
+
+.masthead__note {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dust);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Filtres pays ---------- */
+
+.filters {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  margin-top: 1.1rem;
+  padding-bottom: 0.6rem;
+  scrollbar-width: none;
+}
+.filters::-webkit-scrollbar { display: none; }
+
+.filters__link {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dust);
+  text-decoration: none;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.filters__link:hover { color: var(--ink); }
+
+.filters__link[aria-current="page"] {
+  color: var(--ink);
+  border-color: var(--rule);
+  background: color-mix(in srgb, var(--tile) 7%, transparent);
+}
+
+/* ---------- Le fil ---------- */
+
+.feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 3px 1fr auto;
+  column-gap: 1rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Le rail : signature du site. Sa couleur encode le pays. */
+.item__rail {
+  border-radius: 2px;
+  background: var(--dust);
+}
+.item[data-country="kz"] .item__rail { background: var(--c-kz); }
+.item[data-country="uz"] .item__rail { background: var(--c-uz); }
+.item[data-country="kg"] .item__rail { background: var(--c-kg); }
+.item[data-country="tj"] .item__rail { background: var(--c-tj); }
+.item[data-country="tm"] .item__rail { background: var(--c-tm); }
+
+.item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+  margin-bottom: 0.4rem;
+}
+
+.item__source {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.item__source:hover { border-bottom-color: currentColor; }
+
+/* Transparence éditoriale : dit au lecteur à qui il a affaire. */
+.item__standing {
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 0.1rem 0.32rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.item__standing[data-standing="state"] {
+  color: #9A6B1F;
+  border-color: color-mix(in srgb, #9A6B1F 35%, transparent);
+}
+
+.item__lang { text-transform: uppercase; }
+
+.item__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.0625rem;
+  font-weight: 620;
+  line-height: 1.32;
+  letter-spacing: -0.017em;
+  text-wrap: balance;
+}
+
+.item__title a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--tile), var(--tile));
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.18s ease;
+}
+.item__title a:hover { background-size: 100% 1px; }
+
+.item__summary {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 78%, var(--paper));
+}
+
+.item__thumb {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 2px;
+  background: var(--rule);
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* ---------- Pied ---------- */
+
+.foot {
+  padding: 2rem 0 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: var(--dust);
+}
+.foot p { margin: 0 0 0.5rem; }
+.foot a { color: var(--ink); }
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 34rem) {
+  .item {
+    grid-template-columns: 3px 1fr;
+    column-gap: 0.75rem;
+  }
+  .item__thumb {
+    grid-column: 2;
+    grid-row: auto;
+    width: 100%;
+    height: 150px;
+    margin-top: 0.7rem;
+  }
+  .item__title { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ---------- Multilingue ---------- */
+
+.masthead__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.langs {
+  display: flex;
+  gap: 0.15rem;
+  flex: none;
+}
+
+.langs__link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+  text-decoration: none;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+}
+.langs__link:hover { color: var(--ink); }
+.langs__link[aria-current="page"] {
+  color: var(--paper);
+  background: var(--tile);
+}
+
+/* Marqueur de traduction automatique : discret mais toujours présent */
+.item__mt {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--dust);
+  padding: 0.1rem 0.32rem;
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  white-space: nowrap;
+  cursor: help;
+}
+
+/* ---------- En-tête statique ---------- */
+
+.site-head {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.site-head__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+
+.brand__mark {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.site-head__home {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--dust);
+  text-decoration: none;
+}
+.site-head__home:hover { color: var(--ink); }
+
+/* ---------- Barre de navigation ---------- */
+
+.bar {
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+}
+
+.bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.bar .filters { margin-top: 0; padding-bottom: 0; }
+.bar .langs { flex: none; }
+
+/* ---------- Pied de page ---------- */
+
+.foot__legal {
+  max-width: 42rem;
+  margin: 0 0 0.5rem;
+}
+
+.foot__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0.9rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+.foot__meta + .foot__meta { border-top: 0; padding-top: 0; margin-top: 0.35rem; }
+.foot__meta a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.foot__meta a:hover { border-bottom-color: currentColor; }
+
+@media (max-width: 34rem) {
+  .bar__inner { flex-direction: column; align-items: stretch; gap: 0.35rem; }
+  .bar .langs { justify-content: flex-start; }
+}
