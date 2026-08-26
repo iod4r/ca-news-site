@@ -341,17 +341,27 @@ a { color: inherit; }
   backdrop-filter: saturate(180%) blur(8px);
 }
 
+/* Deux lignes distinctes : pays au-dessus, langues en dessous. */
 .bar__inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.45rem;
-  padding-bottom: 0.45rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
-.bar .filters { margin-top: 0; padding-bottom: 0; }
-.bar .langs { flex: none; }
+.bar .filters { margin-top: 0; padding-bottom: 0.3rem; }
+.bar .langs {
+  flex: none;
+  justify-content: flex-start;
+  padding-top: 0.3rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.bar .langs::-webkit-scrollbar { display: none; }
+.bar .langs__link { flex: none; }
 
 /* ---------- Pied de page ---------- */
 
@@ -371,8 +381,3 @@ a { color: inherit; }
 .foot__meta + .foot__meta { border-top: 0; padding-top: 0; margin-top: 0.35rem; }
 .foot__meta a { text-decoration: none; border-bottom: 1px solid var(--rule); }
 .foot__meta a:hover { border-bottom-color: currentColor; }
-
-@media (max-width: 34rem) {
-  .bar__inner { flex-direction: column; align-items: stretch; gap: 0.35rem; }
-  .bar .langs { justify-content: flex-start; }
-}
