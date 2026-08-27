@@ -340,6 +340,7 @@ a { color: inherit; }
   opacity: 0.85;
 }
 
+/* Sous 44rem le slogan ecraserait le logo : on le masque. */
 @media (max-width: 44rem) {
   .site-head__slogan { display: none; }
 }
@@ -405,3 +406,109 @@ a { color: inherit; }
 .foot__meta + .foot__meta { border-top: 0; padding-top: 0; margin-top: 0.35rem; }
 .foot__meta a { text-decoration: none; border-bottom: 1px solid var(--rule); }
 .foot__meta a:hover { border-bottom-color: currentColor; }
+
+/* ---------- Chinois ---------- */
+/* Le chinois n'a pas d'espaces entre les mots : le crenage negatif et
+   text-wrap: balance, cales sur le latin, y produisent un rendu serre
+   et des coupures arbitraires. */
+:lang(zh) .item__title,
+[lang^="zh"] .item__title {
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-wrap: auto;
+  font-weight: 600;
+}
+
+:lang(zh) .item__summary,
+[lang^="zh"] .item__summary {
+  line-height: 1.75;
+}
+
+:lang(zh) .masthead__title,
+[lang^="zh"] .masthead__title { letter-spacing: 0; }
+
+/* Coupure des URL et chaines latines au sein d'un texte chinois */
+[lang^="zh"] .item__title,
+[lang^="zh"] .item__summary {
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+
+/* ---------- Index des archives ---------- */
+.archive-list {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.archive-list a {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.archive-list a:hover { border-color: var(--tile); color: var(--tile); }
+
+/* ---------- Page autonome (partage) ---------- */
+.single { max-width: 42rem; padding: 1.75rem 0 0; }
+
+.single__meta {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.4rem 0.55rem; margin-bottom: 0.7rem;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  letter-spacing: 0.02em; color: var(--dust);
+}
+
+.single__title {
+  margin: 0 0 1rem;
+  font-size: 1.6rem; font-weight: 640; line-height: 1.25;
+  letter-spacing: -0.02em; text-wrap: balance;
+}
+[lang^="zh"] .single__title { letter-spacing: 0; line-height: 1.4; text-wrap: auto; }
+
+.single__image {
+  width: 100%; height: auto; border-radius: 3px;
+  background: var(--rule); margin-bottom: 1.1rem;
+}
+
+.single__summary {
+  margin: 0 0 1.6rem;
+  font-size: 1.0625rem; line-height: 1.65;
+  color: color-mix(in srgb, var(--ink) 85%, var(--paper));
+}
+[lang^="zh"] .single__summary { line-height: 1.8; }
+
+/* L'appel a lire la source est l'action principale de la page :
+   elle ne remplace pas l'article, elle y renvoie. */
+.single__cta a {
+  display: inline-block;
+  font-size: 0.95rem; font-weight: 560;
+  padding: 0.65rem 1.15rem;
+  color: var(--paper); background: var(--tile);
+  border-radius: 3px; text-decoration: none;
+}
+.single__cta a:hover { filter: brightness(1.08); }
+
+.single__note {
+  margin: 1.4rem 0 0;
+  font-family: var(--font-mono); font-size: 0.68rem;
+  line-height: 1.6; color: var(--dust);
+}
+
+.single__langs {
+  display: flex; flex-wrap: wrap; gap: 0.3rem;
+  margin: 1.6rem 0 2rem; padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+.single__langs a {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--dust); text-decoration: none;
+  padding: 0.25rem 0.5rem; border: 1px solid var(--rule); border-radius: 2px;
+}
+.single__langs a:hover { color: var(--ink); border-color: var(--tile); }
