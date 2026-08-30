@@ -321,29 +321,10 @@ a { color: inherit; }
   display: block;
 }
 
-.site-head__slogan {
-  flex: 1 1 auto;
-  min-width: 0;
-  margin: 0;
-  font-size: 0.75rem;
-  line-height: 1.35;
-  font-style: italic;
-  font-weight: 400;
-  color: color-mix(in srgb, var(--dust) 78%, var(--paper));
-  text-wrap: balance;
-}
-
 /* Le chinois n'a pas de vraie italique : les navigateurs la simulent par
    une inclinaison mecanique, illisible. On la remplace par un retrait. */
-[lang^="zh"] .site-head__slogan {
-  font-style: normal;
-  opacity: 0.85;
-}
-
-/* Sous 44rem le slogan ecraserait le logo : on le masque. */
-@media (max-width: 44rem) {
-  .site-head__slogan { display: none; }
-}
+[lang^="zh"] @media (max-width: 44rem) {
+  }
 
 .site-head__home {
   flex: none;
