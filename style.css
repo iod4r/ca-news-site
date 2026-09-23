@@ -388,7 +388,6 @@ a { color: inherit; }
 .foot__meta a { text-decoration: none; border-bottom: 1px solid var(--rule); }
 .foot__meta a:hover { border-bottom-color: currentColor; }
 
-/* ---------- Chinois ---------- */
 /* Le chinois n'a pas d'espaces entre les mots : le crenage negatif et
    text-wrap: balance, cales sur le latin, y produisent un rendu serre
    et des coupures arbitraires. */
@@ -538,64 +537,6 @@ a { color: inherit; }
   .sources-table td, .sources-table th { padding-right: 0.35rem; }
 }
 
-/* ---------- Bandeaux informatifs ---------- */
-/* Meme police, meme couleur et meme rythme que les rangees de navigation,
-   mais detaches par une respiration : ce sont des informations passives,
-   pas des commandes. Masques tant que les donnees ne sont pas arrivees,
-   pour ne pas decaler la mise en page. */
-
-
-
-
-/* Le premier bandeau visible porte le filet et la respiration. */
-
-
-/* Le second se rattache au premier : ni filet ni respiration. */
-
-
-/* Si la meteo est indisponible, les monnaies prennent sa place en tete
-   du groupe et recuperent filet et respiration. */
-
-
-/* Typographie commune, reprise de .langs__link */
-
-
-
-
-
-/* Un <button> ne suit pas les regles heritees d'un <a> : il faut neutraliser
-   son rendu natif, sinon sa hauteur de ligne et sa police decalent la rangee. */
-
-/* ---------- Bandeaux informatifs ---------- */
-/* Meteo et monnaies : memes police, couleur et rythme que les rangees de
-   navigation, mais detaches par une respiration — ce sont des informations
-   passives, pas des commandes. Masques tant que les donnees ne sont pas
-   arrivees, pour ne pas decaler la mise en page. */
-
-
-
-
-/* Le premier bandeau visible porte le filet et la respiration. */
-
-
-/* Le second se rattache au premier. */
-
-
-/* Si la meteo est indisponible, les monnaies prennent sa place en tete du
-   groupe et recuperent filet et respiration. */
-
-
-/* Typographie commune, reprise ligne pour ligne de .langs__link */
-
-
-
-
-
-
-/* Un <button> n'herite pas comme un <a> : sans neutralisation de son rendu
-   natif, sa police et sa hauteur de ligne decalent toute la rangee. */
-
-/* ---------- Bandeaux informatifs ---------- */
 /* Meteo et monnaies : memes police, couleur et rythme que les rangees de
    navigation, mais detaches par une respiration — ce sont des informations
    passives, pas des commandes. Masques tant que les donnees ne sont pas
@@ -617,9 +558,9 @@ a { color: inherit; }
 
 /* Le premier bandeau visible porte le filet et la respiration. */
 .meteo {
-  margin-top: 0.4rem;
-  padding-top: 0.3rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+  margin-top: 0.75rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--rule);
 }
 
 /* Le second se rattache au premier. */
@@ -628,9 +569,9 @@ a { color: inherit; }
 /* Si la meteo est indisponible, les monnaies prennent sa place en tete du
    groupe et recuperent filet et respiration. */
 .meteo[hidden] + .change {
-  margin-top: 0.4rem;
-  padding-top: 0.3rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+  margin-top: 0.75rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--rule);
 }
 
 /* Typographie commune, reprise ligne pour ligne de .langs__link */
