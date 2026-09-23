@@ -538,58 +538,67 @@ a { color: inherit; }
   .sources-table td, .sources-table th { padding-right: 0.35rem; }
 }
 
-/* ---------- Bandeau meteo ---------- */
-/* Rangee de la barre au meme titre que les pays et les langues : memes
-   filet, retrait, police et couleur. Masque tant que les donnees ne sont
-   pas arrivees, pour ne pas decaler la mise en page. */
-.meteo {
-  display: flex;
-  flex: none;
-  justify-content: flex-start;
-  gap: 0.15rem;
-  padding-top: 0.3rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.meteo::-webkit-scrollbar { display: none; }
-.meteo[hidden] { display: none; }
-
-.meteo__ville {
-  flex: none;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
-  color: var(--dust);
-  padding: 0.2rem 0.45rem;
-}
-.meteo__ciel { opacity: 0.8; }
-
-/* ---------- Bandeau des taux de change ---------- */
+/* ---------- Bandeaux informatifs ---------- */
+/* Meme police, meme couleur et meme rythme que les rangees de navigation,
+   mais detaches par une respiration : ce sont des informations passives,
+   pas des commandes. Masques tant que les donnees ne sont pas arrivees,
+   pour ne pas decaler la mise en page. */
+.meteo,
 .change {
   display: flex;
   flex: none;
   align-items: center;
   justify-content: flex-start;
   gap: 0.15rem;
-  padding-top: 0.3rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
   overflow-x: auto;
   scrollbar-width: none;
 }
+.meteo::-webkit-scrollbar,
 .change::-webkit-scrollbar { display: none; }
-.change[hidden] { display: none; }
+.meteo[hidden], .change[hidden] { display: none; }
 
-.change__bases { display: flex; gap: 0.1rem; flex: none; margin-right: 0.3rem; }
+/* Le premier bandeau visible porte le filet et la respiration. */
+.meteo {
+  margin-top: 0.4rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+}
 
-/* Meme traitement que .langs__link, y compris l'etat courant */
+/* Le second se rattache au premier : ni filet ni respiration. */
+.change { padding-top: 0.1rem; }
+
+/* Si la meteo est indisponible, les monnaies prennent sa place en tete
+   du groupe et recuperent filet et respiration. */
+.meteo[hidden] + .change {
+  margin-top: 0.4rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+}
+
+/* Typographie commune, reprise de .langs__link */
+.meteo__ville,
+.change__paire,
 .change__base {
+  flex: none;
+  white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.7rem;
+  line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--dust);
   padding: 0.2rem 0.45rem;
+}
+
+.meteo__ciel { opacity: 0.8; }
+.change__note { text-decoration: none; cursor: help; opacity: 0.6; }
+
+/* Un <button> ne suit pas les regles heritees d'un <a> : il faut neutraliser
+   son rendu natif, sinon sa hauteur de ligne et sa police decalent la rangee. */
+.change__bases { display: flex; flex: none; gap: 0.1rem; margin-right: 0.3rem; }
+
+.change__base {
+  appearance: none;
+  -webkit-appearance: none;
   border: 0;
   border-radius: 2px;
   background: transparent;
@@ -600,14 +609,3 @@ a { color: inherit; }
   color: var(--paper);
   background: var(--tile);
 }
-
-.change__paire {
-  flex: none;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
-  color: var(--dust);
-  padding: 0.2rem 0.45rem;
-}
-.change__note { text-decoration: none; cursor: help; opacity: 0.6; }
