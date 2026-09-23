@@ -537,3 +537,26 @@ a { color: inherit; }
   .sources-table { font-size: 0.8rem; }
   .sources-table td, .sources-table th { padding-right: 0.35rem; }
 }
+
+/* ---------- Bandeau meteo ---------- */
+/* Masque par defaut : il n'apparait qu'une fois les donnees recues, ce qui
+   evite un decalage de mise en page si l'API ne repond pas. */
+.meteo {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.9rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.3rem 0 0.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--dust);
+}
+.meteo::-webkit-scrollbar { display: none; }
+.meteo[hidden] { display: none; }
+
+.meteo__ville { flex: none; white-space: nowrap; }
+.meteo__nom { letter-spacing: 0.02em; }
+.meteo__ciel { opacity: 0.85; }
+.meteo__temp { color: var(--ink); }
