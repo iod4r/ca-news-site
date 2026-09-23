@@ -560,3 +560,43 @@ a { color: inherit; }
 .meteo__nom { letter-spacing: 0.02em; }
 .meteo__ciel { opacity: 0.85; }
 .meteo__temp { color: var(--ink); }
+
+/* ---------- Bandeau des taux de change ---------- */
+.change {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.3rem 0 0.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--dust);
+}
+.change::-webkit-scrollbar { display: none; }
+.change[hidden] { display: none; }
+
+.change__bases { display: flex; gap: 0.1rem; flex: none; }
+
+.change__base {
+  font: inherit;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--dust);
+  cursor: pointer;
+}
+.change__base:hover { color: var(--ink); }
+.change__base[aria-current="true"] {
+  color: var(--paper);
+  background: var(--tile);
+  border-color: var(--tile);
+}
+
+.change__paire { flex: none; white-space: nowrap; }
+.change__code { letter-spacing: 0.02em; }
+.change__val { color: var(--ink); }
+.change__note { text-decoration: none; cursor: help; opacity: 0.7; }
