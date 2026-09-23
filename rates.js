@@ -68,7 +68,8 @@
       if (!taux.USD[m] || !div) continue;
       var v = taux.USD[m] / div;
       html += '<span class="change__paire">' +
-              '<span class="change__code">' + m + "</span> " +
+              '<span class="change__code">' + m + '</span>' +
+              '<span class="sep">\u2013</span>' +
               '<span class="change__val">' + nombre(v) +
               (ADMINISTRE[m] ? '<abbr class="change__note" title="taux officiel administre">*</abbr>' : "") +
               "</span></span>";
