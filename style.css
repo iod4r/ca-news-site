@@ -539,64 +539,75 @@ a { color: inherit; }
 }
 
 /* ---------- Bandeau meteo ---------- */
-/* Masque par defaut : il n'apparait qu'une fois les donnees recues, ce qui
-   evite un decalage de mise en page si l'API ne repond pas. */
+/* Rangee de la barre au meme titre que les pays et les langues : memes
+   filet, retrait, police et couleur. Masque tant que les donnees ne sont
+   pas arrivees, pour ne pas decaler la mise en page. */
 .meteo {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 0.9rem;
+  flex: none;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 0.3rem 0 0.35rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--dust);
 }
 .meteo::-webkit-scrollbar { display: none; }
 .meteo[hidden] { display: none; }
 
-.meteo__ville { flex: none; white-space: nowrap; }
-.meteo__nom { letter-spacing: 0.02em; }
-.meteo__ciel { opacity: 0.85; }
-.meteo__temp { color: var(--ink); }
+.meteo__ville {
+  flex: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+  padding: 0.2rem 0.45rem;
+}
+.meteo__ciel { opacity: 0.8; }
 
 /* ---------- Bandeau des taux de change ---------- */
 .change {
   display: flex;
-  flex-wrap: nowrap;
+  flex: none;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 0.3rem 0 0.35rem;
-  border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--dust);
 }
 .change::-webkit-scrollbar { display: none; }
 .change[hidden] { display: none; }
 
-.change__bases { display: flex; gap: 0.1rem; flex: none; }
+.change__bases { display: flex; gap: 0.1rem; flex: none; margin-right: 0.3rem; }
 
+/* Meme traitement que .langs__link, y compris l'etat courant */
 .change__base {
-  font: inherit;
-  padding: 0.1rem 0.35rem;
-  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+  padding: 0.2rem 0.45rem;
+  border: 0;
   border-radius: 2px;
   background: transparent;
-  color: var(--dust);
   cursor: pointer;
 }
 .change__base:hover { color: var(--ink); }
 .change__base[aria-current="true"] {
   color: var(--paper);
   background: var(--tile);
-  border-color: var(--tile);
 }
 
-.change__paire { flex: none; white-space: nowrap; }
-.change__code { letter-spacing: 0.02em; }
-.change__val { color: var(--ink); }
-.change__note { text-decoration: none; cursor: help; opacity: 0.7; }
+.change__paire {
+  flex: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+  padding: 0.2rem 0.45rem;
+}
+.change__note { text-decoration: none; cursor: help; opacity: 0.6; }
