@@ -571,6 +571,35 @@ a { color: inherit; }
    navigation, mais detaches par une respiration — ce sont des informations
    passives, pas des commandes. Masques tant que les donnees ne sont pas
    arrivees, pour ne pas decaler la mise en page. */
+
+
+
+
+/* Le premier bandeau visible porte le filet et la respiration. */
+
+
+/* Le second se rattache au premier. */
+
+
+/* Si la meteo est indisponible, les monnaies prennent sa place en tete du
+   groupe et recuperent filet et respiration. */
+
+
+/* Typographie commune, reprise ligne pour ligne de .langs__link */
+
+
+
+
+
+
+/* Un <button> n'herite pas comme un <a> : sans neutralisation de son rendu
+   natif, sa police et sa hauteur de ligne decalent toute la rangee. */
+
+/* ---------- Bandeaux informatifs ---------- */
+/* Meteo et monnaies : memes police, couleur et rythme que les rangees de
+   navigation, mais detaches par une respiration — ce sont des informations
+   passives, pas des commandes. Masques tant que les donnees ne sont pas
+   arrivees, pour ne pas decaler la mise en page. */
 .meteo,
 .change {
   display: flex;

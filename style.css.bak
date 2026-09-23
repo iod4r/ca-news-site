@@ -543,6 +543,34 @@ a { color: inherit; }
    mais detaches par une respiration : ce sont des informations passives,
    pas des commandes. Masques tant que les donnees ne sont pas arrivees,
    pour ne pas decaler la mise en page. */
+
+
+
+
+/* Le premier bandeau visible porte le filet et la respiration. */
+
+
+/* Le second se rattache au premier : ni filet ni respiration. */
+
+
+/* Si la meteo est indisponible, les monnaies prennent sa place en tete
+   du groupe et recuperent filet et respiration. */
+
+
+/* Typographie commune, reprise de .langs__link */
+
+
+
+
+
+/* Un <button> ne suit pas les regles heritees d'un <a> : il faut neutraliser
+   son rendu natif, sinon sa hauteur de ligne et sa police decalent la rangee. */
+
+/* ---------- Bandeaux informatifs ---------- */
+/* Meteo et monnaies : memes police, couleur et rythme que les rangees de
+   navigation, mais detaches par une respiration — ce sont des informations
+   passives, pas des commandes. Masques tant que les donnees ne sont pas
+   arrivees, pour ne pas decaler la mise en page. */
 .meteo,
 .change {
   display: flex;
@@ -555,7 +583,8 @@ a { color: inherit; }
 }
 .meteo::-webkit-scrollbar,
 .change::-webkit-scrollbar { display: none; }
-.meteo[hidden], .change[hidden] { display: none; }
+.meteo[hidden],
+.change[hidden] { display: none; }
 
 /* Le premier bandeau visible porte le filet et la respiration. */
 .meteo {
@@ -564,18 +593,18 @@ a { color: inherit; }
   border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
 }
 
-/* Le second se rattache au premier : ni filet ni respiration. */
+/* Le second se rattache au premier. */
 .change { padding-top: 0.1rem; }
 
-/* Si la meteo est indisponible, les monnaies prennent sa place en tete
-   du groupe et recuperent filet et respiration. */
+/* Si la meteo est indisponible, les monnaies prennent sa place en tete du
+   groupe et recuperent filet et respiration. */
 .meteo[hidden] + .change {
   margin-top: 0.4rem;
   padding-top: 0.3rem;
   border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
 }
 
-/* Typographie commune, reprise de .langs__link */
+/* Typographie commune, reprise ligne pour ligne de .langs__link */
 .meteo__ville,
 .change__paire,
 .change__base {
@@ -591,11 +620,10 @@ a { color: inherit; }
 
 .meteo__ciel { opacity: 0.8; }
 .change__note { text-decoration: none; cursor: help; opacity: 0.6; }
-
-/* Un <button> ne suit pas les regles heritees d'un <a> : il faut neutraliser
-   son rendu natif, sinon sa hauteur de ligne et sa police decalent la rangee. */
 .change__bases { display: flex; flex: none; gap: 0.1rem; margin-right: 0.3rem; }
 
+/* Un <button> n'herite pas comme un <a> : sans neutralisation de son rendu
+   natif, sa police et sa hauteur de ligne decalent toute la rangee. */
 .change__base {
   appearance: none;
   -webkit-appearance: none;
