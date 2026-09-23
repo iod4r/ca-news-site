@@ -19,6 +19,7 @@
   --c-kg: #B4543A;
   --c-tj: #7A5EA6;
   --c-tm: #B08428;
+  --c-af: #3E5FA3;
 
   --font-display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
@@ -146,6 +147,7 @@ a { color: inherit; }
 .item[data-country="kg"] .item__rail { background: var(--c-kg); }
 .item[data-country="tj"] .item__rail { background: var(--c-tj); }
 .item[data-country="tm"] .item__rail { background: var(--c-tm); }
+.item[data-country="af"] .item__rail { background: var(--c-af); }
 
 .item__meta {
   display: flex;

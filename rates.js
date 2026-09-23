@@ -10,7 +10,7 @@
   var hote = document.getElementById("change");
   if (!hote) return;
 
-  var MONNAIES = ["KZT", "UZS", "KGS", "TJS", "TMT"];
+  var MONNAIES = ["KZT", "UZS", "KGS", "TJS", "TMT", "AFN"];
   var BASES = ["USD", "EUR", "RUB"];
   var SYMBOLE = { USD: "$", EUR: "\u20AC", RUB: "\u20BD" };
 
