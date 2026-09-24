@@ -636,7 +636,7 @@ a { color: inherit; }
 /* Le logo reste visible au defilement. La barre se cale juste dessous :
    sa position collante doit partir de la hauteur de l'en-tete, sinon les
    deux se superposent. */
-:root { --head-h: 3.65rem; }
+:root { --head-h: 4.3rem; }
 
 .site-head {
   position: sticky;
