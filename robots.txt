@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 Sitemap: https://daryo.com/sitemap.xml
-Sitemap: https://daryo.com/sitemap-news.xml
+Sitemap: https://daryo.com/sitemap-news.en.xml
+Sitemap: https://daryo.com/sitemap-news.fr.xml
+Sitemap: https://daryo.com/sitemap-news.kk.xml
+Sitemap: https://daryo.com/sitemap-news.ru.xml
+Sitemap: https://daryo.com/sitemap-news.uz.xml
+Sitemap: https://daryo.com/sitemap-news.zh.xml
