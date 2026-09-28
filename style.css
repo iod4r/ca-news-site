@@ -328,11 +328,6 @@ a { color: inherit; }
   display: block;
 }
 
-/* Le chinois n'a pas de vraie italique : les navigateurs la simulent par
-   une inclinaison mecanique, illisible. On la remplace par un retrait. */
-[lang^="zh"] @media (max-width: 44rem) {
-  }
-
 .site-head__home {
   flex: none;
   font-family: var(--font-mono);
@@ -636,7 +631,12 @@ a { color: inherit; }
 /* Le logo reste visible au defilement. La barre se cale juste dessous :
    sa position collante doit partir de la hauteur de l'en-tete, sinon les
    deux se superposent. */
-:root { --head-h: 4.3rem; }
+/* --head-h mesuree : la hauteur reelle de la barre du logo est ecrite ici
+   par time.js, a chaque changement de mise en page. La valeur ci-dessous
+   n'est qu'un repli pour le cas sans JavaScript ; elle n'a plus a etre
+   exacte, et c'est le point : figee a 4.3rem elle depassait la hauteur
+   reelle de onze pixels, ouvrant une couture entre les deux barres. */
+:root { --head-h: 3.65rem; }
 
 .site-head {
   position: sticky;
@@ -655,3 +655,8 @@ a { color: inherit; }
   .bar { background: var(--paper); }
 }
 
+
+
+/* Recouvrement d'un pixel : evite qu'un arrondi sous-pixel ne laisse
+   filtrer une ligne de contenu entre la barre du logo et le menu. */
+.bar { margin-top: -1px; border-top: 1px solid var(--rule); }
