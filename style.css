@@ -342,8 +342,6 @@ a { color: inherit; }
 
 .bar {
   border-bottom: 1px solid var(--rule);
-  position: sticky;
-  top: 0;
   z-index: 10;
   background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
@@ -627,26 +625,13 @@ a { color: inherit; }
   padding: 0 0.28em;
   opacity: 0.55;
 }
-/* ---------- En-tete collante ---------- */
-/* Le logo reste visible au defilement. La barre se cale juste dessous :
-   sa position collante doit partir de la hauteur de l'en-tete, sinon les
-   deux se superposent. */
-/* --head-h mesuree : la hauteur reelle de la barre du logo est ecrite ici
-   par time.js, a chaque changement de mise en page. La valeur ci-dessous
-   n'est qu'un repli pour le cas sans JavaScript ; elle n'a plus a etre
-   exacte, et c'est le point : figee a 4.3rem elle depassait la hauteur
-   reelle de onze pixels, ouvrant une couture entre les deux barres. */
-:root { --head-h: 3.65rem; }
-
 .site-head {
-  position: sticky;
   top: 0;
   z-index: 20;
   background: var(--paper);
 }
 
 .bar {
-  top: var(--head-h);
   z-index: 10;
 }
 
@@ -659,4 +644,39 @@ a { color: inherit; }
 
 /* Recouvrement d'un pixel : evite qu'un arrondi sous-pixel ne laisse
    filtrer une ligne de contenu entre la barre du logo et le menu. */
-.bar { margin-top: -1px; border-top: 1px solid var(--rule); }
+.bar { margin-border-top: 1px solid var(--rule); }
+
+
+/* ---------- En-tête : un seul bloc collant ---------- */
+/* Les deux barres etaient collantes separement, celle des pays calee sur
+   la hauteur de celle du logo via --head-h. Cette hauteur depend de la
+   police, donc de la langue, et de la largeur de l'ecran : aucune valeur,
+   figee ou mesuree, ne la couvre a tout instant. D'ou la couture par
+   laquelle les articles defilaient.
+
+   Ici un seul element colle. Les deux barres sont dans son flux normal :
+   elles sont solidaires par construction, et il n'y a plus de decalage a
+   calculer. */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--paper);
+}
+
+/* Dans le conteneur, les barres reprennent le flux normal. */
+.topbar > .site-head,
+.topbar > .bar {
+  position: static;
+  top: auto;
+  z-index: auto;
+}
+
+/* Le flou de la barre des pays n'a plus de sens : le conteneur est opaque,
+   et un backdrop-filter sur un enfant d'element colle cree en outre un
+   contexte d'empilement qui brouille le rendu sur WebKit. */
+.topbar > .bar {
+  background: transparent;
+  backdrop-filter: none;
+}
