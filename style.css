@@ -709,3 +709,31 @@ a { color: inherit; }
   background: transparent;
   backdrop-filter: none;
 }
+
+
+/* ---------- Autres sources d'un meme evenement ---------- */
+/* Un evenement ne garde qu'un article sur le fil ; les redactions ecartees
+   sont citees ici, avec un lien vers leur propre papier. Le registre est
+   celui de la ligne de metadonnees -- monospace et discret -- pour que ce
+   soit lu comme une information de provenance, pas comme du contenu. */
+
+.item__aussi {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--dust);
+}
+
+.item__aussi a {
+  color: var(--dust);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.item__aussi a:hover {
+  color: var(--ink);
+  border-bottom-color: currentColor;
+}
+.item__aussi span { padding: 0 0.1em; opacity: 0.5; }
