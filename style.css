@@ -619,7 +619,19 @@ a { color: inherit; }
   padding: 0.2rem 0.45rem;
 }
 
-.meteo__ciel { opacity: 0.8; }
+/* Emoji meteo : en couleur, donc sans l'attenuation du texte du bandeau.
+   Police emoji explicite, sinon certains systemes prennent la variante
+   monochrome de la police a chasse fixe. */
+.meteo__ciel {
+  display: inline-block;
+  margin: 0 0.3em 0 0.1em;
+}
+.meteo__emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1;
+  vertical-align: -0.08em;
+}
 .change__note { text-decoration: none; cursor: help; opacity: 0.6; }
 .change__bases { display: flex; flex: none; gap: 0.1rem; margin-right: 0.3rem; }
 
