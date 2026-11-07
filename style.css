@@ -36,6 +36,14 @@
   --wrap: 46rem;
 }
 
+/* Sur grand ecran, la page s'elargit : a 46rem, le bandeau meteo (six
+   capitales) et celui des monnaies debordaient et defilaient. 56rem les
+   tient sur une ligne ; les resumes restent plafonnes a 42rem, autour de
+   85 signes par ligne. */
+@media (min-width: 48rem) {
+  :root { --wrap: 56rem; }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     /* #101317 avait une luminance de 0.006 : a deux pour cent du noir.
@@ -239,6 +247,7 @@ a { color: inherit; }
 
 .item__summary {
   margin: 0;
+  max-width: 42rem;
   font-size: 0.9375rem;
   line-height: 1.55;
   color: color-mix(in srgb, var(--ink) 78%, var(--paper));
