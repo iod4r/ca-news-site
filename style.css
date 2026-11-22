@@ -160,6 +160,33 @@ a { color: inherit; }
   background: color-mix(in srgb, var(--tile) 7%, transparent);
 }
 
+/* Chaque pays porte sa couleur, la meme que le filet des articles :
+   un trait vertical devant le nom, jamais le texte lui-meme (le jaune
+   du Turkmenistan serait illisible en petits caracteres). */
+.filters__link[data-country="kz"] { --pays: var(--c-kz); }
+.filters__link[data-country="uz"] { --pays: var(--c-uz); }
+.filters__link[data-country="kg"] { --pays: var(--c-kg); }
+.filters__link[data-country="tj"] { --pays: var(--c-tj); }
+.filters__link[data-country="tm"] { --pays: var(--c-tm); }
+.filters__link[data-country="af"] { --pays: var(--c-af); }
+.filters__link[data-country="region"] { --pays: var(--c-region); }
+
+.filters__link[data-country]::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  margin-right: 0.45em;
+  vertical-align: -0.08em;
+  border-radius: 1px;
+  background: var(--pays);
+}
+
+.filters__link[data-country][aria-current="page"] {
+  border-color: color-mix(in srgb, var(--pays) 55%, transparent);
+  background: color-mix(in srgb, var(--pays) 10%, transparent);
+}
+
 /* ---------- Le fil ---------- */
 
 .feed {
