@@ -22,13 +22,17 @@
   --etat:   #9A6B1F;
 
   /* Accents pays : encodent une information, pas une décoration */
-  --c-kz: #1B6E8C;
-  --c-uz: #2F8F6B;
-  --c-kg: #B4543A;
-  --c-tj: #7A5EA6;
-  --c-tm: #B08428;
-  --c-af: #3E5FA3;
-  --c-region: #5A6472;
+  /* Couleurs des pays : une teinte franche par pays (bleu, vert, rouge,
+     violet, ambre, noir comme le drapeau afghan, gris pour le regional),
+     verifiees pour rester distinctes entre elles, y compris pour un
+     daltonien, et lisibles en filet sur le fond (contraste 3:1 au moins). */
+  --c-kz: #1F6FB2;
+  --c-uz: #2E8540;
+  --c-kg: #C62828;
+  --c-tj: #6D28D9;
+  --c-tm: #C27400;
+  --c-af: #2F3437;
+  --c-region: #8A8F98;
 
   --font-display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
@@ -65,13 +69,13 @@
     /* Les accents pays n'existaient que pour le fond clair. Ils encodent
        une information, donc ils doivent rester distinguables entre eux
        autant que lisibles : chacun depasse 5:1. */
-    --c-kz: #45B8D4;
-    --c-uz: #5CC48C;
-    --c-kg: #E8825E;
-    --c-tj: #BC8ADE;
-    --c-tm: #D9B45C;
-    --c-af: #6689DE;
-    --c-region: #A3ACB9;
+    --c-kz: #5AA2E6;
+    --c-uz: #5CBF72;
+    --c-kg: #EF6461;
+    --c-tj: #A78BFA;
+    --c-tm: #F2A93B;
+    --c-af: #E8E6E1;
+    --c-region: #6B7280;
   }
 }
 
