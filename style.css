@@ -405,6 +405,19 @@ a { color: inherit; }
 }
 .site-head__home:hover { color: var(--ink); }
 
+/* Devise, juste avant « accueil » : poussee a droite, discrete, masquee
+   sur petit ecran ou elle tasserait le logo. */
+.site-head__tagline {
+  margin: 0 0 0 auto;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--dust);
+  white-space: nowrap;
+}
+@media (max-width: 40rem) {
+  .site-head__tagline { display: none; }
+}
+
 /* ---------- Barre de navigation ---------- */
 
 .bar {
